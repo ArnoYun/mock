@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Sql {
     private static final String DB_USERNAME = "admin";
     private static final String DB_PASSWORD = "admin";
-    private static final String DB_URL = "jdbc:postgresql://192.168.56.102:5432/users";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/users";
 
     public static ArrayList<String> select(String login) throws SQLException {
 
