@@ -52,7 +52,7 @@ public class Sql {
         }
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            if(ex.getMessage().equals("Запрос не вернул результатов.")){
+            if(ex.getMessage().equals("Запрос не вернул результатов.")||ex.getMessage().equals("No results were returned by the query.")){
                 System.out.println("true");
                 exception = 1;
             }
