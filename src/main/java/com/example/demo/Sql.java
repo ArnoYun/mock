@@ -2,7 +2,6 @@ package com.example.demo;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Sql {
     private static final String DB_USERNAME = "admin";
@@ -52,13 +51,15 @@ public class Sql {
             preparedStatement.close();
         }
         catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             if(ex.getMessage().equals("Запрос не вернул результатов.")){
+                System.out.println("true");
                 exception = 1;
             }
         }
         return exception;
     }
-    public static void insert_time(String insert_login,String time)  {
+    public static String insert_time(String insert_login, String time)  {
 
         try(Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {;
             String insert = "insert into users.login_time (login, login_time) values (?,?)";
@@ -69,8 +70,9 @@ public class Sql {
             preparedStatement.close();
         }
         catch (SQLException e) {
-            System.out.println(e);
+            return e.toString();
         }
+        return null;
     }
 
     }

@@ -46,8 +46,8 @@ public class MockController {
             SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
             Date date = new Date(System.currentTimeMillis());
             String time = format.format(date);
-            try {
-                if(insert(login, password, name) == 1){
+            try { int insert_excep = insert(login, password, name);
+                if(insert_excep == 1){
                     insert_time(login, time);
                     return new ArrayList<Map<String, String>>() {{
                         add(new HashMap<String, String>() {{
@@ -55,8 +55,10 @@ public class MockController {
                             put("login", login);
                         }});
                     }};
+
                 }
                 else {
+                    System.out.println("else");
                     throw new Exception() ;
                 }
             }
