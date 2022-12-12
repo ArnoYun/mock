@@ -49,6 +49,7 @@ public class Sql {
             preparedStatement.setString(2, insert_password);
             preparedStatement.setString(3, insert_name);
             preparedStatement.executeQuery();
+            preparedStatement.close();
         }
         catch (SQLException ex) {
             if(ex.getMessage().equals("Запрос не вернул результатов.")){
@@ -65,6 +66,7 @@ public class Sql {
             preparedStatement.setString(1, insert_login);
             preparedStatement.setString(2, time);
             preparedStatement.executeQuery();
+            preparedStatement.close();
         }
         catch (SQLException e) {
             System.out.println(e);
