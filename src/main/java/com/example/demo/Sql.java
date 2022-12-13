@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Sql {
     private static final String DB_USERNAME = "admin";
     private static final String DB_PASSWORD = "admin";
-    private static final String DB_URL = "jdbc:postgresql://0.0.0.0:5432/users";
+    private static final String DB_URL = "jdbc:postgresql://192.168.56.102:5432/users";
 
     public static ArrayList<String> select(String login) throws SQLException {
 
@@ -14,6 +14,7 @@ public class Sql {
             Connection connection = null;
             Statement statement = null;
             ResultSet result = null;
+        System.out.println(DB_URL);
             try{connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
                 statement = connection.createStatement();
                 String SELECT_LOGIN = "select * from users.login_time where login ='" + login +"'";
@@ -25,6 +26,7 @@ public class Sql {
                     }
                     }
                 } catch (SQLException e) {
+                System.out.println("select"+e);
                 throw e;
             }
             finally {
@@ -70,6 +72,7 @@ public class Sql {
             preparedStatement.close();
         }
         catch (SQLException e) {
+            System.out.println("insert_time"+e);
             return e.toString();
         }
         return null;

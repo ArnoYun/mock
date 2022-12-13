@@ -21,6 +21,7 @@ public class MockController {
     public List<Map<String, String>> list(String get, @PathVariable String login)  {
 
         try {
+
             ArrayList<String> get_result = select(login);
             System.out.println(get_result);
             String get_login = get_result.get(0);
